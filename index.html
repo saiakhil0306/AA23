@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise</title>
+    <style>
+        body {
+            background-color: red;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 20vh;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .button {
+            background-color: white;
+            color: red;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .falling-symbols {
+            position: absolute;
+            font-size: 30px;
+            animation: fall linear infinite;
+            top: -50px;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-50px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        #photo-container {
+            position: absolute;
+            width: 100%;
+            top: 10%;
+        }
+
+        .falling-photo {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            animation: fall linear infinite;
+            clip-path: circle();
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="message">Astha, Will you be My Valentine?</h1>
+    <p id="surprise-text">A surprise awaits for you inside</p>
+    <button class="button" id="valentine-btn">Click yes to know</button>
+
+    <div id="poem-container" class="hidden">
+        <h1>You are my melody divine,</h1>
+        <p>Will you become my valentine?</p>
+        <p>Your smile’s stronger than the finest wine,😉</p>
+        <p>Your eyes make my heart entwine.</p>
+        <p>With you, my soul's on cloud nine,</p>
+        <p>Like stars that in the heavens shine.✨❤️</p>
+        <h2>Happy Valentine's Day ❤️✨</h2>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="HuzoorMera.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const button = document.getElementById("valentine-btn");
+        const poemContainer = document.getElementById("poem-container");
+        const message = document.getElementById("message");
+        const surpriseText = document.getElementById("surprise-text");
+        const music = document.getElementById("bg-music");
+
+        button.addEventListener("click", function() {
+            message.style.display = "none";
+            surpriseText.style.display = "none";
+            button.style.display = "none";
+            poemContainer.classList.remove("hidden");
+            music.play();
+        });
+
+        function createFallingElement(content, size) {
+            let element = document.createElement("div");
+            element.classList.add("falling-symbols");
+            element.innerHTML = content;
+            element.style.left = Math.random() * 100 + "vw";
+            element.style.animationDuration = Math.random() * 5 + 3 + "s";
+            element.style.fontSize = size + "px";
+            document.body.appendChild(element);
+            
+            setTimeout(() => element.remove(), 7000);
+        }
+
+        function createFallingPhotos() {
+            const photoArray = ["a1.jpg","a2.jpg","a3.jpg"];
+            let img = document.createElement("img");
+            img.src = photoArray[Math.floor(Math.random() * photoArray.length)];
+            img.classList.add("falling-photo");
+            img.style.left = Math.random() * 100 + "vw";
+            img.style.animationDuration = Math.random() * 5 + 3 + "s";
+            document.body.appendChild(img);
+
+            setTimeout(() => img.remove(), 7000);
+        }
+
+        setInterval(() => createFallingElement("❤️", 30), 500);
+        setInterval(() => createFallingElement("💕", 25), 600);
+        setInterval(() => createFallingPhotos(), 2500);
+    </script>
+
+</body>
+</html>
