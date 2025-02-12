@@ -49,12 +49,6 @@
             100% { transform: translateY(100vh) rotate(360deg); }
         }
 
-        #photo-container {
-            position: absolute;
-            width: 100%;
-            top: 10%;
-        }
-
         .falling-photo {
             position: absolute;
             width: 80px;
@@ -66,22 +60,21 @@
 </head>
 <body>
 
-    <h1 id="message">Astha, Will you be My Valentine?</h1>
-    <p id="surprise-text">A surprise awaits for you inside</p>
+    <h1 id="message">Astha, Will you become my Valentine?</h1>
+    <p id="surprise-text">A surprise awaits you inside</p>
     <button class="button" id="valentine-btn">Click yes to know</button>
 
     <div id="poem-container" class="hidden">
         <h1>You are my melody divine,</h1>
-        <p>Will you become my valentine?</p>
-        <p>Your smile’s stronger than the finest wine,😉</p>
-        <p>Your eyes make my heart entwine.</p>
-        <p>With you, my soul's on cloud nine,</p>
-        <p>Like stars that in the heavens shine.✨❤️</p>
-        <h2>Happy Valentine's Day ❤️✨</h2>
+        <p>Will you be my Valentine?</p>
+        <p>Your smile, stronger than the finest wine😉</p>
+        <p>Your eyes make my heart entwine</p>
+        <p>With you, my soul is on cloud nine.</p>
+        <h2>Happy Valentine's Day❤️✨</h2>
     </div>
 
     <audio id="bg-music" loop>
-        <source src="HuzoorMera.mp3" type="audio/mpeg">
+        <source src="HuzoorMera.mp3.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -113,7 +106,7 @@
         }
 
         function createFallingPhotos() {
-            const photoArray = ["a1.jpg","a2.jpg","a3.jpg"];
+            const photoArray = ["a1.jpeg", "a2.jpeg", "a3.jpeg", "a4.jpeg"];
             let img = document.createElement("img");
             img.src = photoArray[Math.floor(Math.random() * photoArray.length)];
             img.classList.add("falling-photo");
